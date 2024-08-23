@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .comic-container {
+            background-color: #fff;
+            border: 5px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .speech-bubble {
+            background-color: #ffeb3b;
+            border-radius: 15px;
+            border: 2px solid #000;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: #ffeb3b;
+            border-bottom: 0;
+            border-right: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+        .character-1 .speech-bubble {
+            background-color: #76ff03;
+        }
+        .character-1 .speech-bubble:after {
+            border-top-color: #76ff03;
+        }
+        .character-2 .speech-bubble {
+            background-color: #03a9f4;
+        }
+        .character-2 .speech-bubble:after {
+            border-top-color: #03a9f4;
+        }
+        .character-1, .character-2 {
+            display: flex;
+            align-items: center;
+        }
+        .character-1 img, .character-2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-top: 5px solid #000;
+            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="comic-container">
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Làm thêm? Học? Giải trí? Sức khỏe? Cộng đồng? Một ngày của sinh viên CNTT có đủ giờ không nhỉ?</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Thử xem nào! Chắc chắn là có cách cân bằng hết.</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Làm thêm thì chọn việc liên quan đến CNTT, vừa có tiền vừa có kinh nghiệm. Đừng làm việc gì mà không liên quan, bạn sẽ mất phương hướng đấy!</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Học thì nên đều đặn. Code mỗi ngày như đánh răng vậy. Bỏ qua một hôm là bug đầy ra.</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Giải trí thì đừng quá đà. Game hay phim đều tốt, nhưng đừng để chúng chiếm hết thời gian bạn nhé!</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Sức khỏe là trên hết! Đừng quên tập thể dục, ăn uống điều độ. Code khỏe thì code mới tốt được!</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Cộng đồng cũng quan trọng. Tham gia các hoạt động, làm quen bạn mới. CNTT cũng là về teamwork, đâu chỉ một mình bạn với máy tính.</div>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="chap01.html">Tập trước</a>
+        <a href="chap03.html">Tập kế tiếp</a>
+    </div>
+</body>
+</html>

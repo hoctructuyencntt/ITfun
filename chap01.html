@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Style Dialogue</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .comic-container {
+            background-color: #fff;
+            border: 5px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .speech-bubble {
+            background-color: #ffeb3b;
+            border-radius: 15px;
+            border: 2px solid #000;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: #ffeb3b;
+            border-bottom: 0;
+            border-right: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+        .character-1 .speech-bubble {
+            background-color: #76ff03;
+        }
+        .character-1 .speech-bubble:after {
+            border-top-color: #76ff03;
+        }
+        .character-2 .speech-bubble {
+            background-color: #03a9f4;
+        }
+        .character-2 .speech-bubble:after {
+            border-top-color: #03a9f4;
+        }
+        .character-1, .character-2 {
+            display: flex;
+            align-items: center;
+        }
+        .character-1 img, .character-2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-top: 5px solid #000;
+            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="comic-container">
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Ê, nghề công nghệ thông tin là gì nhỉ?</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Chắc là ngồi máy tính gõ gõ cả ngày?</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Đúng, nhưng chi tiết hơn là bạn giống bác sĩ... nhưng chữa bệnh cho máy tính, không phải con người.</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Vậy có cần mặc áo blouse trắng không?</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Không cần đâu, áo thun in mấy câu đùa "khó hiểu" là đủ rồi. Công việc chính là tìm và diệt lỗi phần mềm, giống như bắt ma mà không có máy hút của <a href="https://vi.wikipedia.org/wiki/Bi%E1%BB%87t_%C4%91%E1%BB%99i_s%C4%83n_ma">Ghostbusters.</a></div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Nghe căng nhỉ?</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Ừ, nhưng cái hay là bạn có thể làm việc ở quán cà phê, miễn là có wifi. Vừa code vừa nhâm nhi trà sữa, ai mà không thích?</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Thế nghề này có khó không?</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Cũng khá đấy, phải chịu khó học hỏi, đối mặt với những dòng code phức tạp như... phim trinh thám mà không có phụ đề. Nhưng nếu vượt qua, cảm giác "diệt" được một bug thì giống như vừa giải xong trò Sudoku siêu khó vậy!</div>
+        </div>
+        <div class="character-2">
+            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
+            <div class="speech-bubble">Vậy có giá phải trả không?</div>
+        </div>
+        <div class="character-1">
+            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
+            <div class="speech-bubble">Thường là vài cốc cà phê và vài sợi tóc bạc. Nhưng bù lại, bạn có thể tạo ra những thứ tuyệt vời... và lương cũng “tuyệt vời” theo luôn!</div>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="index.html">Trang chủ</a>
+        <a href="chap02.html">Tập kế tiếp</a>
+    </div>
+</body>
+</html>
