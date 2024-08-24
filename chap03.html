@@ -1,127 +1,189 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chap 03: Con Đường CNTT Không Chỉ Lập Trình</title>
+    <title>Chap 03: Con Đường Trở Thành Lập Trình Viên</title>
     <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
         }
         .comic-container {
-            background-color: #fff;
-            border: 5px solid #000;
-            border-radius: 10px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
             padding: 20px;
-            max-width: 90%;
-            max-height: 80%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            overflow-y: auto;
-            flex-grow: 1;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+        }
+        .comic-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .panel {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .panel:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .panel img {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            margin: 0 20px;
         }
         .speech-bubble {
-            background-color: #ffeb3b;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            padding: 15px 20px;
             border-radius: 15px;
-            border: 2px solid #000;
-            padding: 15px;
             position: relative;
-            margin: 20px 0;
-            word-wrap: break-word;
-            max-width: 100%;
+            max-width: 70%;
+            font-size: 1.1em;
+            line-height: 1.5;
         }
-        .speech-bubble:after {
+        .panel:nth-child(odd) .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 50px;
+            top: 20px;
+            left: -20px;
             width: 0;
             height: 0;
-            border: 20px solid transparent;
-            border-top-color: #ffeb3b;
+            border: 10px solid transparent;
+            border-right-color: #000000;
+            border-left: 0;
             border-bottom: 0;
+            margin-top: -5px;
+        }
+        .panel:nth-child(even) .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #000000;
             border-right: 0;
-            margin-left: -10px;
-            margin-bottom: -20px;
-        }
-        .character-1 .speech-bubble {
-            background-color: #76ff03;
-        }
-        .character-1 .speech-bubble:after {
-            border-top-color: #76ff03;
-        }
-        .character-2 .speech-bubble {
-            background-color: #03a9f4;
-        }
-        .character-2 .speech-bubble:after {
-            border-top-color: #03a9f4;
-        }
-        .character-1, .character-2 {
-            display: flex;
-            align-items: center;
-        }
-        .character-1 img, .character-2 img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            border-bottom: 0;
+            margin-top: -5px;
         }
         .navigation {
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            padding: 10px 20px;
-            box-sizing: border-box;
-            background-color: #fff;
-            border-top: 5px solid #000;
-            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
-            margin-top: 10px;
+            margin-top: 30px;
         }
         .navigation a {
             text-decoration: none;
-            color: #000;
+            color: #000000;
             font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            background-color: #e0e0e0;
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .navigation a:hover {
+            background-color: #d0d0d0;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .panel {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .panel:nth-child(even) {
+                flex-direction: column;
+            }
+            .panel img {
+                margin: 0 0 10px 0;
+            }
+            .speech-bubble {
+                max-width: 100%;
+            }
+            .panel:nth-child(odd) .speech-bubble::after,
+            .panel:nth-child(even) .speech-bubble::after {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="comic-container">
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Lập trình không phải là con đường duy nhất trong CNTT. Vậy còn hướng nào khác?</div>
+        <div class="comic-title">Con Đường Trở Thành Lập Trình Viên</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Bạn có nghĩ việc trở thành lập trình viên là khó không?
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Ồ, nhiều lắm! Đồ họa, mạng máy tính, marketing, quản trị hệ thống...</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Ban đầu có thể khó, nhưng nếu bạn đam mê và kiên trì, mọi thứ sẽ trở nên dễ dàng hơn.
+            </div>
         </div>
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Đồ họa thì sao? Sáng tạo, dùng các công cụ như Photoshop, Illustrator để biến ý tưởng thành hình ảnh.</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Vậy mình nên bắt đầu từ đâu nhỉ? Có quá nhiều ngôn ngữ và công nghệ để học.
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Mạng máy tính thì cần hiểu sâu về kết nối, bảo mật, làm sao để cả thế giới online mà không ai xâm nhập được.</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Hãy bắt đầu với những kiến thức cơ bản như cấu trúc dữ liệu và giải thuật, rồi chọn một ngôn ngữ phổ biến như Python hoặc JavaScript.
+            </div>
         </div>
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Marketing số cũng không kém phần hấp dẫn. Làm sao để sản phẩm CNTT đến tay người dùng, quản lý chiến dịch quảng cáo, tối ưu hóa SEO...</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Mình nghe nói thực hành rất quan trọng. Có lời khuyên nào cho việc luyện tập không?
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Còn nhiều nữa như quản trị hệ thống, hỗ trợ kỹ thuật, phân tích dữ liệu... CNTT đâu chỉ có code!</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Đúng vậy! Hãy tham gia các dự án nhỏ, làm bài tập trên các trang web luyện code, và đừng ngại hỏi khi gặp khó khăn.
+            </div>
         </div>
-    </div>
-    <div class="navigation">
-        <a href="chap02.html">Tập trước</a>
-        <a href="chap04.html">Tập kế tiếp</a>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Cảm ơn bạn! Mình sẽ bắt đầu hành trình này ngay hôm nay.
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="chap02.html">← Tập Trước</a>
+            <a href="chap04.html">Tập Tiếp Theo →</a>
+        </div>
     </div>
 </body>
 </html>

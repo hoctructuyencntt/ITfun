@@ -3,127 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chap 02: Đời sống sinh viên IT</title>
     <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
         }
         .comic-container {
-            background-color: #fff;
-            border: 5px solid #000;
-            border-radius: 10px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
             padding: 20px;
-            max-width: 90%;
-            max-height: 80%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            overflow-y: auto;
-            flex-grow: 1;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+        }
+        .comic-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .panel {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .panel:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .panel img {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            margin: 0 20px;
         }
         .speech-bubble {
-            background-color: #ffeb3b;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            padding: 15px 20px;
             border-radius: 15px;
-            border: 2px solid #000;
-            padding: 15px;
             position: relative;
-            margin: 20px 0;
-            word-wrap: break-word;
-            max-width: 100%;
+            max-width: 70%;
+            font-size: 1.1em;
+            line-height: 1.5;
         }
-        .speech-bubble:after {
+        .panel:nth-child(odd) .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 50px;
+            top: 20px;
+            left: -20px;
             width: 0;
             height: 0;
-            border: 20px solid transparent;
-            border-top-color: #ffeb3b;
+            border: 10px solid transparent;
+            border-right-color: #000000;
+            border-left: 0;
             border-bottom: 0;
+            margin-top: -5px;
+        }
+        .panel:nth-child(even) .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #000000;
             border-right: 0;
-            margin-left: -10px;
-            margin-bottom: -20px;
-        }
-        .character-1 .speech-bubble {
-            background-color: #76ff03;
-        }
-        .character-1 .speech-bubble:after {
-            border-top-color: #76ff03;
-        }
-        .character-2 .speech-bubble {
-            background-color: #03a9f4;
-        }
-        .character-2 .speech-bubble:after {
-            border-top-color: #03a9f4;
-        }
-        .character-1, .character-2 {
-            display: flex;
-            align-items: center;
-        }
-        .character-1 img, .character-2 img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            border-bottom: 0;
+            margin-top: -5px;
         }
         .navigation {
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            padding: 10px 20px;
-            box-sizing: border-box;
-            background-color: #fff;
-            border-top: 5px solid #000;
-            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
-            margin-top: 10px;
+            margin-top: 30px;
         }
         .navigation a {
             text-decoration: none;
-            color: #000;
+            color: #000000;
             font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            background-color: #e0e0e0;
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .navigation a:hover {
+            background-color: #d0d0d0;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .panel {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .panel:nth-child(even) {
+                flex-direction: column;
+            }
+            .panel img {
+                margin: 0 0 10px 0;
+            }
+            .speech-bubble {
+                max-width: 100%;
+            }
+            .panel:nth-child(odd) .speech-bubble::after,
+            .panel:nth-child(even) .speech-bubble::after {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="comic-container">
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Làm thêm? Học? Giải trí? Sức khỏe? Cộng đồng? Một ngày của sinh viên CNTT có đủ giờ không nhỉ?</div>
+        <div class="comic-title">Đời sống sinh viên CNTT</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Làm thêm? Học? Giải trí? Sức khỏe? Cộng đồng? Một ngày của sinh viên CNTT có đủ giờ không nhỉ?
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Thử xem nào! Chắc chắn là có cách cân bằng hết.</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Thử xem nào! Chắc chắn là có cách cân bằng hết.
+            </div>
         </div>
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Làm thêm thì chọn việc liên quan đến CNTT, vừa có tiền vừa có kinh nghiệm. Đừng làm việc gì mà không liên quan, bạn sẽ mất phương hướng đấy!</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Làm thêm thì chọn việc liên quan đến CNTT, vừa có tiền vừa có kinh nghiệm. Đừng làm việc gì mà không liên quan, bạn sẽ mất phương hướng đấy!
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Học thì nên đều đặn. Code mỗi ngày như đánh răng vậy. Bỏ qua một hôm là bug đầy ra.</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Học thì nên đều đặn. Code (lập trình) mỗi ngày như đánh răng vậy. Bỏ qua một hôm là bug (lỗi) đầy ra.
+            </div>
         </div>
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Giải trí thì đừng quá đà. Game hay phim đều tốt, nhưng đừng để chúng chiếm hết thời gian bạn nhé!</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Giải trí thì đừng quá đà. Game hay phim đều tốt, nhưng đừng để chúng chiếm hết thời gian bạn nhé!
+            </div>
         </div>
-        <div class="character-2">
-            <img src="https://i.imgur.com/Ou7Mx6L.png" alt="Character 2">
-            <div class="speech-bubble">Sức khỏe là trên hết! Đừng quên tập thể dục, ăn uống điều độ. Code khỏe thì code mới tốt được!</div>
+
+        <div class="panel">
+            <img src="user2.png" alt="Character 2">
+            <div class="speech-bubble">
+                Sức khỏe là trên hết! Đừng quên tập thể dục, ăn uống điều độ. Code khỏe thì code mới tốt được!
+            </div>
         </div>
-        <div class="character-1">
-            <img src="https://i.imgur.com/5xkGqj1.png" alt="Character 1">
-            <div class="speech-bubble">Cộng đồng cũng quan trọng. Tham gia các hoạt động, làm quen bạn mới. CNTT cũng là về teamwork, đâu chỉ một mình bạn với máy tính.</div>
+
+        <div class="panel">
+            <img src="user1.png" alt="Character 1">
+            <div class="speech-bubble">
+                Cộng đồng cũng quan trọng. Tham gia các hoạt động, làm quen bạn mới. CNTT cũng là về teamwork, đâu chỉ một mình bạn với máy tính.
+            </div>
         </div>
-    </div>
-    <div class="navigation">
-        <a href="chap01.html">Tập trước</a>
-        <a href="chap03.html">Tập kế tiếp</a>
+
+        <div class="navigation">
+            <a href="chap01.html">Tập trước</a>
+            <a href="chap03.html">Tập kế tiếp</a>
+        </div>
     </div>
 </body>
 </html>
