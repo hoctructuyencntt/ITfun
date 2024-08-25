@@ -11,45 +11,48 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
         }
         .container {
             background-color: #fff;
             border: 5px solid #000;
             border-radius: 10px;
             padding: 20px;
-            max-width: 90%;
-            max-height: 80%;
+            max-width: 600px;
+            width: 100%;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
-            overflow-y: auto;
+            margin-top: 20px;
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #d32f2f;
             margin-bottom: 20px;
             text-shadow: 2px 2px 0px #000;
+            word-wrap: break-word;
         }
         p {
             font-size: 1.2em;
             color: #000;
             margin-bottom: 20px;
+            word-wrap: break-word;
         }
-        .chapter-select {
+        .chapter-select, .career-select {
             margin-bottom: 20px;
         }
         select {
             padding: 10px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             border: 2px solid #000;
             border-radius: 10px;
             background-color: #ffeb3b;
             color: #000;
             cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
         }
         .btn-start {
             background-color: #ffeb3b;
@@ -62,21 +65,54 @@
             display: inline-block;
             transition: background-color 0.3s ease;
             margin-top: 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .btn-start:hover {
             background-color: #ffc107;
         }
         .social-icons {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-        .social-icons img {
-            width: 40px;
-            height: 40px;
-            margin: 0 10px;
-            transition: transform 0.3s;
+        .social-icons a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #ffeb3b;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
         }
-        .social-icons img:hover {
-            transform: scale(1.2);
+        .social-icons a:hover {
+            background-color: #ffc107;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+                margin-top: 10px;
+            }
+            p {
+                font-size: 1em;
+            }
+            select {
+                font-size: 1em;
+                padding: 8px;
+            }
+            .btn-start {
+                font-size: 1.2em;
+                padding: 8px 15px;
+            }
+            .social-icons a {
+                font-size: 0.8em;
+                padding: 8px;
+            }
         }
     </style>
     <script>
@@ -86,34 +122,75 @@
                 window.location.href = selectedChapter;
             }
         }
+
+        function navigateToCareer() {
+            var selectedCareer = document.getElementById("career-select").value;
+            if (selectedCareer) {
+                window.location.href = selectedCareer;
+            }
+        }
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Chào mừng đến với thế giới vui nhộn của CNTT!</h1>
+        <h1>Chào mừng đến với thế giới vui nhộn của IT!</h1>
        
-        <p>Bạn đã bao giờ tự hỏi thế giới Công Nghệ Thông Tin (CNTT) trông như thế nào từ một góc nhìn hoàn toàn khác chưa? Nếu có, bạn đã đến đúng nơi rồi! Ở đây, chúng tôi phân tích các khái niệm cơ bản trong CNTT một cách thú vị như xem một buổi biểu diễn hài kịch (hoặc ít nhất chúng tôi cũng cố gắng vậy).</p>
+        <p>Bạn đã bao giờ tự hỏi thế giới Công Nghệ Thông Tin (IT) trông như thế nào từ một góc nhìn hoàn toàn khác chưa? Nếu có, bạn đã đến đúng nơi rồi! Ở đây, chúng tôi phân tích các khái niệm cơ bản trong IT một cách thú vị như xem một buổi biểu diễn hài kịch (hoặc ít nhất chúng tôi cũng cố gắng vậy).</p>
         <p>Dù bạn là người mới hoàn toàn hay chỉ muốn tìm một chút niềm vui, loạt bài viết của chúng tôi sẽ hướng dẫn bạn qua các khái niệm cốt lõi làm nên thế giới công nghệ thông tin - tất cả đều với một chút hài hước. Vậy nên, hãy lấy đồ uống yêu thích của bạn, ngồi xuống, và chúng ta bắt đầu thôi!</p>
-         <div class="chapter-select">
+        
+        <div class="chapter-select">
             <select id="chapter-select" onchange="navigateToChapter()">
-                <option value="">Chọn một tập để bắt đầu...</option>
-                <option value="chap01.html">Tập 01: Nghề Công Nghệ Thông Tin</option>
-                <option value="chap02.html">Tập 02: Đời sống sinh viên CNTT</option>
-                <option value="chap03.html">Tập 03: Con Đường Trở Thành Lập Trình Viên</option>
+                <option value="">Câu chuyện chuyên môn...</option>
+                <option value="chap01.html">Tập 01: Công Nghệ Thông Tin - IT</option>
+                <option value="chap02.html">Tập 02: Đời sống sinh viên IT</option>
+                <option value="chap03.html">Tập 03: Lập trình - Coding - Programming</option>
                 <option value="chap04.html">Tập 04: Đâu chỉ có lập trình</option>
                 <option value="chap05.html">Tập 05: "Code" Là Gì?</option>
                 <option value="chap06.html">Tập 06: Phần mềm (Software)</option>
                 <option value="chap07.html">Tập 07: Phần cứng (Hardware)</option>
-<option value="chap08.html">Tập 08: Hệ Điều Hành (Operating System)</option>
+                <option value="chap08.html">Tập 08: Hệ Điều Hành (Operating System)</option>
                 <option value="chap09.html">Tập 09: Tại Sao Phải Học Về 0 và 1?</option>
                 <option value="chap10.html">Tập 10: Mã Máy, Ngôn Ngữ Lập Trình, Cấp Thấp và Cấp Cao</option>
+<option value="chap32.html">Tập 11: Học Lắp Ráp và Cài Đặt Máy Tính Làm Gì?</option>
+<option value="chap33.html">Tập 12: Học Mạng Máy Tính (Computer Network) Làm Gì?</option>
+<option value="chap34.html">Tập 13: Học Cơ Sở Dữ Liệu (Database) Làm Gì?</option>
+<option value="chap35.html">Tập 14: Tại Sao Nên Học Ngôn Ngữ Lập Trình C Đầu Tiên?</option>
+<option value="chap36.html">Tập 15: Tại Sao Nên Học Cấu Trúc Dữ Liệu và Giải Thuật?</option>
+
             </select>
         </div>
+
+        <div class="career-select">
+            <select id="career-select" onchange="navigateToCareer()">
+                <option value="">Câu chuyện nghề nghiệp...</option>
+ <option value="chap11.html">Coder và Programmer</option>
+ <option value="chap12.html">Junior và Senior </option>
+ <option value="chap13.html">Engineer và Developer </option>
+                <option value="chap14.html">Front-end Developer</option>
+                <option value="chap15.html">Back-end Developer</option>
+                <option value="chap16.html">Full-stack Developer</option>
+                <option value="chap17.html">Mobile Developer</option>
+                <option value="chap18.html">Game Developer</option>
+                <option value="chap19.html">Embedded Engineer</option>
+                <option value="chap20.html">Designer</option>
+                <option value="chap21.html">Tester</option>
+                <option value="chap22.html">System Engineer / System Admin </option>
+                <option value="chap23.html">DevOps Engineer / DevSecOps Engineer</option>
+<option value="chap24.html">Cloud Engineer</option>
+<option value="chap25.html">Data Engineer</option>
+<option value="chap26.html">Data Scientist</option>
+<option value="chap27.html">Database Engineer</option>
+<option value="chap28.html">AI Engineer</option>
+<option value="chap29.html">Blockchain Engineer</option>
+<option value="chap30.html">ERP và ERP Engineer</option>
+<option value="chap31.html">IT Support / Helpdesk</option>
+            </select>
+        </div>
+        
         <div class="social-icons">
             <a href="https://ngocminhtran.com/contact/">Hòm thư Admin</a>
             <a href="https://www.facebook.com/people/B%E1%BB%99-M%C3%B4n-Tin-H%E1%BB%8Dc/pfbid0r7RP4KnMYoaVkVHssMzh47BCFngYBB23ddqf4ZtRD96rqJ8JvLEQVhJLef5Q3NYcl/">Facebook</a>
             <a href="http://cntt.cdktcnnt.edu.vn/">Website</a>
-            <a href="https://www.youtube.com/@CongNgheThongTin2024">Youtube</a>
         </div>
     </div>
 </body>
